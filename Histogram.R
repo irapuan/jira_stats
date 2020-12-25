@@ -25,13 +25,14 @@ p80 <- quantile(jira_data$cycletime, 0.80)
 p70 <- quantile(jira_data$cycletime, 0.70)
 
 
-ggplot(jira_data, aes(x=closed, y=cycletime)) + 
-  geom_point(aes(col=issuetype))+
-  geom_hline(yintercept=p95, linetype="dashed", color = "red")+
-  annotate("text", x = min (jira_data$closed), y = p95, color = "red" , label = "95th Percentile", vjust = -0.5, hjust = "inward") +
-  geom_hline(yintercept=p80, linetype="dashed", color = "blue")+
-  annotate("text", x = min (jira_data$closed), y = p80 , color = "blue", label = "80th Percentile", vjust = -0.5, hjust = "inward") +
-  geom_hline(yintercept=p70, linetype="dashed", color = "green") +
-  annotate("text", x = min (jira_data$closed), y = p70 , color = "green", label = "70th Percentile", vjust = -0.5, hjust = "inward") 
+ggplot(jira_data, aes(x=cycletime, fill=issuetype)) +
+  geom_histogram(binwidth = 1)+
+  geom_vline(xintercept=p95, linetype="dashed", color = "red")+
+  annotate("text", x = p95, y = Inf,  color = "red" , label = "95th Percentile", vjust = "inward") +
+  geom_vline(xintercept=p80, linetype="dashed", color = "blue")+
+  annotate("text", x = p80, y = Inf,  color = "blue" , label = "80th Percentile", vjust = "inward") +
+  geom_vline(xintercept=p70, linetype="dashed", color = "green") +
+  annotate("text", x = p70, y = Inf,  color = "green" , label = "70th Percentile", vjust = "inward") 
+
 
 
