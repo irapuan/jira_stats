@@ -7,7 +7,7 @@ library(lubridate)
 source("JiraAPI.R")
 
 
-get_issues_dataframe <- get_stories_by_filter("project=SPVC")
+get_issues_dataframe <- get_stories_by_filter("project=MS+and+created>startOfMonth(-3)")
 
 jira_data <- get_issues_dataframe %>%
   mutate(created = as.Date(issues.fields.created, "%Y-%m-%dT%H:%M:%OS"),
@@ -27,5 +27,5 @@ final_data <- jira_selected %>%
 
 
 ggplot(final_data, aes(x=date, y=n)) + 
-  geom_col(aes(fill=issuetype))
+  geom_col(aes(fill=issuetype)) 
 
