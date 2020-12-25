@@ -64,11 +64,11 @@ ggplot(jira_data, aes(x=closed, y=cycletime)) +
   geom_hline(yintercept=p70, linetype="dashed", color = "green")
 
 
-ggplot(jira_data, aes(x=cycletime, fill=issuetype)) +
-  geom_histogram(binwidth = 1)+
-  geom_vline(xintercept=p95, linetype="dashed", color = "red")+
-  geom_vline(xintercept=p80, linetype="dashed", color = "blue")+
-  geom_vline(xintercept=p70, linetype="dashed", color = "green")
+#ggplot(jira_data, aes(x=cycletime, fill=issuetype)) +
+#  geom_histogram(binwidth = 1)+
+#  geom_vline(xintercept=p95, linetype="dashed", color = "red")+
+#  geom_vline(xintercept=p80, linetype="dashed", color = "blue")+
+#  geom_vline(xintercept=p70, linetype="dashed", color = "green")
 
 
 

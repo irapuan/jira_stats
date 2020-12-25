@@ -19,5 +19,4 @@ default:
 
 
 ## To do
-- [ ] Clerear the readme file.
 - [ ] Refactor the scripts to not duplicate code.
