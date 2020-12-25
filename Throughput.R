@@ -14,7 +14,7 @@ jira_data <- get_issues_dataframe %>%
          closed = as.Date(issues.fields.resolutiondate, "%Y-%m-%dT%H:%M:%OS"),
          cycletime = as.numeric(difftime(closed, created), units="days"),
          issuetype = issues.fields.issuetype.name) %>%
-  filter(!is.na(closed)) %>%
+  filter(!is.na(closed)) 
 
 
 jira_selected <- jira_data %>%

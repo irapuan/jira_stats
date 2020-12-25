@@ -14,11 +14,10 @@ get_stories_by_filter <- function(filter) {
   isTheLastPage <- FALSE
   page <- 0
   maxResults <- 100
-  #fields=resolutiondate,created,issuetype&
   while (!isTheLastPage) {
-    call1 <- paste(config$base_url,endpoint,"?jql=", filter ,"&expand=changelog&fields=resolutiondate,created,issuetype,changelog&maxResults=", maxResults, "&page=",page, sep ="")
+    http_request <- paste(config$base_url,endpoint,"?jql=", filter ,"&fields=resolutiondate,created,issuetype&maxResults=", maxResults, "&startAt=",page, sep ="")
     
-    get_issues <- GET(call1, add_headers("Authorization" = config$token))
+    get_issues <- GET(http_request, add_headers("Authorization" = config$token))
     
     get_issues <- content(get_issues,"text")
     
@@ -38,3 +37,5 @@ get_stories_by_filter <- function(filter) {
   get_issues_dataframe
   
 }
+
+
