@@ -17,6 +17,8 @@ default:
 
 2 - Run the scripts in RStudio.
 
+![Scatter Plot](scatterplot.jpg)
+
 
 ## To do
 - [ ] Refactor the scripts to not duplicate code.
