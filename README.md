@@ -18,6 +18,7 @@ default:
 2 - Run the scripts in RStudio.
 
 ![Scatter Plot](scatterplot.jpg)
+![Histogram](histogram.jpg)
 
 
 ## To do
