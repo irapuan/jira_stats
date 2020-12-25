@@ -5,9 +5,6 @@ library(tidyr)
 source("JiraAPI.R")
 
 
-config <- config::get(file = "config.yml")
-
-
 get_issues_dataframe <- get_stories_by_filter("project=MS")
 
 jira_data <- get_issues_dataframe %>%
