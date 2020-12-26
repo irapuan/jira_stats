@@ -5,6 +5,11 @@ library(tidyr)
 require("httr")
 require("jsonlite")
 
+
+######
+# This Script is work in progress.
+######
+
 config <- config::get(file = "config.yml")
 
 endpoint <- "search"

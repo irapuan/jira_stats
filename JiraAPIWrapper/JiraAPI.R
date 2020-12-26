@@ -6,8 +6,14 @@ require("jsonlite")
 
 config <- config::get(file = "config.yml")
 
+escape_characters <- function(filter) {
+  str_replace_all(filter, " ","+")
+}
+
 get_stories_by_filter <- function(filter) {
   endpoint <- "search"
+  
+  filter <- escape_characters(filter)
   
   get_issues_dataframe <- data.frame()
   

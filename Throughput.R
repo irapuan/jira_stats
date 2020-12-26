@@ -6,7 +6,7 @@ library(lubridate)
 source("JiraAPIWrapper/JiraAPI.R")
 
 
-filter <- "project=MS+and+created>startOfMonth(-3)+and+issuetype+in+(Bug,Story)"
+filter <- "project=MS and created > startOfMonth(-3) and issuetype in (Bug,Story)"
 
 
 get_issues_dataframe <- get_stories_by_filter(filter)
