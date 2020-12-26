@@ -1,11 +1,12 @@
 library(dplyr)
 library(ggplot2)
 library(tidyr)
-
 source("JiraAPIWrapper/JiraAPI.R")
 
+filter <- "project=MS+and+created>startOfMonth(-3)+and+issuetype+in+(Bug,Story)"
 
-get_issues_dataframe <- get_stories_by_filter("project=SPVC+and+created>startOfMonth(-6)+and+issuetype=story")
+get_issues_dataframe <- get_stories_by_filter(filter)
+
 
 jira_data <- get_issues_dataframe %>%
   mutate(created = as.Date(issues.fields.created, "%Y-%m-%dT%H:%M:%OS"),

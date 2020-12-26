@@ -3,12 +3,13 @@ library(ggplot2)
 library(tidyr)
 library(tidyverse)
 library(lubridate)
-
-
 source("JiraAPIWrapper/JiraAPI.R")
 
 
-get_issues_dataframe <- get_stories_by_filter("project=MS+and+created>startOfMonth(-3)+and+issuetype+in+(Bug,Story)")
+filter <- "project=MS+and+created>startOfMonth(-3)+and+issuetype+in+(Bug,Story)"
+
+
+get_issues_dataframe <- get_stories_by_filter(filter)
 
 jira_data <- get_issues_dataframe %>%
   mutate(created = as.Date(issues.fields.created, "%Y-%m-%dT%H:%M:%OS"),

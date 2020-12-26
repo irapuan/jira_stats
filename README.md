@@ -1,6 +1,6 @@
 # R Jira Stats
 
-Simple scripts to generate some insigths on Jira boards
+Simple R scripts to generate some insigths on Jira boards.
 
 ## how to use
 
@@ -15,12 +15,25 @@ default:
 
 [Getting Jira API token](https://confluence.atlassian.com/cloud/api-tokens-938839638.html)
 
-2 - Run the scripts in RStudio.
+2 - Change the variable filter at the beginning of each script using [JQL language](https://www.atlassian.com/software/jira/guides/expand-jira/jql) and run the scripts in RStudio.
 
 ![Scatter Plot](img/scatterplot.jpg)
 ![Histogram](img/histogram.jpg)
 ![Throughput](img/throughput.jpg)
 
+
+## Installing dependencies
+
+```{R}
+install.packages(dplyr)
+install.packages(ggplot2)
+install.packages(tidyr)
+install.packages(tidyverse)
+install.packages(lubridate)
+install.packages(httr)
+install.packages(jsonlite)
+
+```
 
 ## To do
 - [ ] Refactor the scripts to not duplicate code.
