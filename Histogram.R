@@ -5,7 +5,7 @@ library(tidyr)
 source("JiraAPI.R")
 
 
-get_issues_dataframe <- get_stories_by_filter("project=MS")
+get_issues_dataframe <- get_stories_by_filter("project=SPVC+and+created>startOfMonth(-6)+and+issuetype=story")
 
 jira_data <- get_issues_dataframe %>%
   mutate(created = as.Date(issues.fields.created, "%Y-%m-%dT%H:%M:%OS"),
@@ -30,6 +30,7 @@ ggplot(jira_data, aes(x=cycletime, fill=issuetype)) +
   annotate("text", x = p80, y = Inf,  color = "blue" , label = "80th Percentile", vjust = "inward") +
   geom_vline(xintercept=p70, linetype="dashed", color = "green") +
   annotate("text", x = p70, y = Inf,  color = "green" , label = "70th Percentile", vjust = "inward") 
+
 
 
 
