@@ -2,7 +2,7 @@ library(dplyr)
 library(ggplot2)
 library(tidyr)
 
-source("JiraAPI.R")
+source("JiraAPIWrapper/JiraAPI.R")
 
 
 get_issues_dataframe <- get_stories_by_filter("project=SPVC+and+created>startOfMonth(-6)+and+issuetype=story")
