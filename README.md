@@ -16,7 +16,6 @@ install.packages(tidyverse)
 install.packages(lubridate)
 install.packages(httr)
 install.packages(jsonlite)
-
 ```
 
 3 - Create a file called config.yml in the project root folder that looks like to this one: 

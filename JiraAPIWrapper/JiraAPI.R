@@ -2,6 +2,8 @@
 
 require("httr")
 require("jsonlite")
+require("stringr")
+require("plyr")
 
 
 config <- config::get(file = "config.yml")
@@ -15,13 +17,15 @@ get_stories_by_filter <- function(filter) {
   
   filter <- escape_characters(filter)
   
+  
   get_issues_dataframe <- data.frame()
   
   isTheLastPage <- FALSE
   page <- 0
   maxResults <- 100
+  pages <- list()
   while (!isTheLastPage) {
-    http_request <- paste(config$base_url,endpoint,"?jql=", filter ,"&fields=resolutiondate,created,issuetype&maxResults=", maxResults, "&startAt=",page, sep ="")
+    http_request <- paste(config$base_url,endpoint,"?jql=", filter ,"&fields=resolutiondate,created,issuetype,status,-subtask&maxResults=", maxResults, "&startAt=",page, sep ="")
     
     get_issues <- GET(http_request, add_headers("Authorization" = config$token))
     
@@ -29,7 +33,8 @@ get_stories_by_filter <- function(filter) {
     
     get_issues_json <- fromJSON(get_issues, flatten = TRUE)
     
-    get_issues_dataframe <- rbind(get_issues_dataframe,as.data.frame(get_issues_json))
+  
+    get_issues_dataframe <- rbind.fill(get_issues_dataframe,as.data.frame(get_issues_json))
     
     page <- page + maxResults
     total <- strtoi(get_issues_json$total)
